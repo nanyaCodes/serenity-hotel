@@ -256,12 +256,12 @@
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 20px;
         }
 
         .form-group input,
@@ -270,6 +270,10 @@
             padding: 0.8rem;
             border: none;
             border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .form-group textarea {
@@ -492,8 +496,16 @@
                 flex: 0 0 100%;
                 margin: 1rem 0;
             } 
+
+            input, textarea, select, button{
+                max-width: 100%;
+            }
+            input, textarea, select{
+                font-size: 16px;
+            }
             .social-links{
                 justify-content: center;
+                text-align: center;
             }
         }
 
@@ -522,6 +534,7 @@
             .social-links {
                 gap: 10px;
                 justify-content: center;
+                text-align: center;
             }
         
         }
