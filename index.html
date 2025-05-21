@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Serenity Grand Hotel - Your Luxury Getaway</title>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+        }
+
+
+        body {
+        color: #333;
+        line-height: 1.6;
+        background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #c19b26;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #d4af37; /* Gold color on hover */
+        }
+
+        .nav-logo {
+            align-items: center;
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 5%;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #d4af37;
+            color: #1a1a1a;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #c19b26;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 10%;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #d4af37;
+        }
+
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Rooms & Services */
+        .rooms {
+            padding: 5rem 10%;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .room-cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .room-card {
+            flex: 0 0 calc(33.333% - 2rem);
+            margin: 1rem;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            min-width: 300px;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .room-info {
+            padding: 1.5rem;
+        }
+
+        .room-info h3 {
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .room-info p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #d4af37;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Contact & Footer */
+        .contact {
+            padding: 5rem 10%;
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: #fff;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 5rem;
+            text-align: left;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 270px;
+            margin: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 1.7rem;
+            color: #d4af37;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #d4af37;
+        }
+
+        .social-links {
+            display: flex;
+            margin-right: 1rem;
+            color: #fff;
+            font-size: 1.5rem;
+            text-decoration: none;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #ccc;
+        }
+
+        .icon-item i {
+            font-size: 20px;
+            background-color: #fff;
+            color: #d4af37;
+            border-radius: 90px;
+            padding: 5px;
+        }
+
+        .icons {
+            font-size: 16px;
+            background-color: #fff;
+            color: #d4af37;
+            border-radius: 60px;
+            padding: 3px 9px;
+        }
+
+        .icons-one {
+            font-size: 16px;
+            background-color: #fff;
+            color: #d4af37;
+            border-radius: 60px;
+            padding: 3px 9px;
+        }
+
+        .icons-two {
+            font-size: 16px;
+            background-color: #fff;
+            color: #d4af37;
+            border-radius: 60px;
+            padding: 3px 10px;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 1024px) {
+            .room-card {
+                flex: 0 0 calc(50% - 2rem);
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.7rem;
+            }
+            
+            .footer-col {
+                flex: 0 0 calc(50% - 4rem);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+
+            header {
+                padding: 1rem 5%;
+                position: relative;
+            }
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                right: 5%;
+                top: 30%;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 50px);
+                background-color: #1a1a1a;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 1.5rem 0;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text, .about-image {
+                min-width: 100%;
+            }
+            
+            .room-card {
+                flex: 0 0 100%;
+                margin: 1rem 0;
+            }
+            
+            .footer-col {
+                flex: 0 0 100%;
+                margin: 1rem 0;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            header {
+                padding: 1rem 5%;
+                position: relative;
+            }
+            
+            .about, .rooms, .contact {
+                padding: 3rem 5%;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.5rem;
+            }
+            
+            .social-links {
+                gap: 10px;
+                justify-content: center;
+            }
+        
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation Section -->
+    <header>
+        <div class="logo">Serenity Grand</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul class="nav-logo" id="nav-menu">
+                <li><a href="#index.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#booking.html" class="btn">Book Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Welcome to Serenity Grand Hotel</h1>
+        <p>Experience luxury and comfort like never before. Your perfect getaway awaits.</p>
+        <a href="#rooms" class="btn">Explore Our Rooms</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Nestled in the heart of the city, Serenity Grand Hotel has been a symbol of luxury and excellence since 1995. Our commitment to exceptional service and attention to detail has earned us a reputation as one of the finest hotels in the region.</p>
+                <p>With stunning architecture, elegant interiors, and world-class amenities, we provide an unforgettable experience for both business and leisure travelers. Our dedicated staff is available 24/7 to ensure your stay exceeds expectations.</p>
+                <p>At Serenity Grand, we believe in creating memories that last a lifetime. From our gourmet restaurants to our spa facilities, every aspect of our hotel is designed with your comfort and enjoyment in mind.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Hotel Lobby">
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms & Services Section -->
+    <section class="rooms" id="rooms">
+        <h2 class="section-title">Our Rooms & Suites</h2>
+        <div class="room-cards">
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Deluxe Room">
+                <div class="room-info">
+                    <h3>Deluxe Room</h3>
+                    <p>Spacious and comfortable room with modern amenities and city views.</p>
+                    <span class="price">$199 / night</span>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Executive Suite">
+                <div class="room-info">
+                    <h3>Executive Suite</h3>
+                    <p>Luxurious suite with separate living area and premium amenities.</p>
+                    <span class="price">$349 / night</span>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Presidential Suite">
+                <div class="room-info">
+                    <h3>Presidential Suite</h3>
+                    <p>Our finest accommodation with panoramic views and exclusive services.</p>
+                    <span class="price">$599 / night</span>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-form">
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+                
+        <div class="footer-info">
+            <div class="footer-col">
+                <h3>Serenity Grand Hotel</h3>
+                <p>123 Luxury Avenue<br>Cityville, CV 12345<br>United States</p>
+                <p>Phone: +1 (555) 123-4567<br>Email: info@serenitygrand.com</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#rooms">Rooms & Suites</a></li>
+                    <li><a href="#">Dining</a></li>
+                    <li><a href="#">Spa & Wellness</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <div class="icon-item">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="icons">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <div class="icons-one">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </div>
+                    <div class="icons-two">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Serenity Grand Hotel. All rights reserved.</p>
+        </div>
+    </section>
+
+    <!-- JavaScript for mobile menu toggle -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a nav link
+        const navLinks = document.querySelectorAll('#nav-menu li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+        
+    </script>
+</body>
+</html>
+
+
